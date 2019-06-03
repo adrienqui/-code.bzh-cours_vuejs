@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Class & Style</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="app" class="container-fluid my-3">
+      <div class="row">
+        <div class="col">
+          <form>
+            <div class="form-group">
+              <label for="inputNom" :style="{color: form.nom.labelColor, 'font-size':form.nom.labelSize+'px'}">Nom</label><br/>
+              <label for="inputNom" :style="form.nom.style">Nom</label>
+              <input id="inputNom" type="text" class="form-control" :class="{ 'is-valid': form.nom.validate }" /><br/>
+              <input type="text" class="form-control" :class="form.nom.class" /><br/>
+              <input type="text" class="form-control" :class="nomClass" />
+              <div :class="{ 'invalid-feedback': form.nom.error}">{{ form.nom.error }}</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          form: {
+            nom: {
+              labelColor: 'blue',
+              labelSize: 22,
+              style: {
+                color: 'green',
+                fontSize: '12px'
+              },
+              validate: false,
+              error:null,
+              class: {
+                'is-valid': true
+              }
+            }
+          }
+        },
+        computed: {
+          nomClass: function () {
+            return {
+              'is-valid': this.form.nom.validate === true,
+              'is-invalid': this.form.nom.validate === false && this.form.nom.error !== null
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Form v-model</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model.trim="inputText" />
+      <p>Input texte : {{ inputText }}</p>
+      <hr/>
+      <textarea v-model.lazy="inputTextarea"></textarea>
+      <p style="white-space:pre-line;">{{ inputTextarea }}</p>
+      <hr/>
+      <input type="checkbox" v-model="checkbox" /> {{ checkbox }}
+      <hr/>
+      <input type="radio" v-model="radioPick" value="Un" />
+      <input type="radio" v-model="radioPick" value="Deux" />
+      <p>Input radio picked : {{ radioPick }}</p>
+      <hr/>
+      <input type="checkbox" v-model="checkboxs" value="A" />
+      <input type="checkbox" v-model="checkboxs" value="B" />
+      <input type="checkbox" v-model="checkboxs" value="C" />
+      <p>Input checkbox cheked : {{ checkboxs }}</p>
+      <hr/>
+      <select v-model="select">
+        <option disabled value="">Choisir</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <p>Selected : {{ select }}</p>
+      <hr/>
+      <select multiple v-model.number="selects">
+        <option disabled value="">Choisir</option>
+        <option value="0">A</option>
+        <option value="1">B</option>
+        <option value="2">C</option>
+      </select>
+      <p>Selected : {{ selects }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          inputText: ``,
+          inputTextarea: ``,
+          checkbox: false,
+          radioPick: ``,
+          checkboxs: [],
+          select: ``,
+          selects: []
+        }
+      })
+    </script>
+  </body>
+</html>

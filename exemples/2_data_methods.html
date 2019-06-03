@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Data & Methods</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        data: {
+          livres: [
+            { titre: `Peter Pan`, auteur: `James Matthew Barrie` },
+            { titre: `La stratégie ender`, auteur: `Orson Scott Card` }
+          ]
+        },
+        created: function() {
+          this.listLivres()
+        },
+        methods: {
+          listLivres: function() {
+            for (livre of this.livres) {
+              console.log(`${livre.titre} de ${livre.auteur}`)
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Loop v-for</title>
+  </head>
+  <body>
+    <div id="app">
+      <p><span v-for="n in 10">{{ n }} </span></p>
+      <hr/>
+      <ul>
+        <li v-for="livre of livres">{{ message }} : {{ livre.titre }} de {{ livre.auteur }}</li>
+      </ul>
+      <hr/>
+      <ul>
+        <li v-for="(livre, index) of livres" :key="livre.titre">{{ index }} : {{ livre.titre }}</li>
+      </ul>
+      <hr/>
+      <ul>
+        <li v-for="(value, name, index) in objLivre" :key="name">[{{ index }}] {{ name }} : {{ value }}</li>
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          message: 'Livre',
+          livres: [
+            { titre: `Peter Pan`, auteur: `James Matthew Barrie` },
+            { titre: `La stratégie ender`, auteur: `Orson Scott Card` }
+          ],
+          objLivre: { titre: `Titre du livre`, auteur: `Auteur du livre` }
+        }
+      })
+    </script>
+  </body>
+</html>

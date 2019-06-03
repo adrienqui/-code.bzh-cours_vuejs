@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Conditional v-if</title>
+  </head>
+  <body>
+    <div id="app">
+      <template v-if="expression">
+        <p>Expression true</p>
+        <p>Paragraphe 2</p>
+      </template>
+      <p v-else-if="expression == null">Expression undefined</p>
+      <p v-else>Expression false</p><br/>
+      <template v-if="loginType == 'username'">
+        <label>Username</label>
+        <input type="text" key="username" />
+      </template>
+      <template v-else>
+        <label>Email</label>
+        <input type="email" key="email" />
+      </template>
+      <p v-show="expression">Expression true</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          expression: true,
+          loginType: 'username'
+        }
+      })
+    </script>
+  </body>
+</html>

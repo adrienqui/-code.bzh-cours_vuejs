@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Computed et Watch</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          message: `Bonjour`
+        },
+        computed: {
+          reversedMessage: function() {
+            return this.message.split(``).reverse().join(``)
+          }
+        },
+        watch: {
+          message: function (newMessage, oldMessage) {
+            console.log(`Message precedent : ${oldMessage}`)
+            console.log(`Message nouveau : ${newMessage}`)
+            console.log(`reversedMessage : ${this.reversedMessage}`)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

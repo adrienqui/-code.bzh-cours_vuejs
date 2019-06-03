@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Interpolation, directive & shorthand</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>Message : {{ message }}</p>
+      <p v-once>Ceci ne changera jamais : {{ message }}</p>
+      <p>Reversed Message : {{ reversedMessage }}</p>
+      <p>String HTML entre accolades : {{ rawHTML }}</p>
+      <p>String HTML avec directive v-html : <span v-html="rawHTML"></span></p>
+      <p v-bind:title="paragraphName">Name du paragraphe avec directive bind depuis data</p>
+      <button :disabled="btnDisabled">Valider</button><br/>
+      <p>{{ (btnDisabled) ? `Ok ${btnDisabled}` : `Ko ${btnDisabled}` }}</p>
+      <!-- <p>{{ var a = 12 }}</p> NON! -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          message: `Bonjour`,
+          rawHTML: `<em>Texte en italique</em>`,
+          paragraphName: `Texte depuis data`,
+          btnDisabled: true
+        },
+        computed: {
+          reversedMessage: function() {
+            return this.message.split(``).reverse().join(``)
+          }
+        },
+        watch: {
+          message: function (newMessage, oldMessage) {
+            console.log(`Message precedent : ${oldMessage}`)
+            console.log(`Message nouveau : ${newMessage}`)
+            console.log(`reversedMessage : ${this.reversedMessage}`)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
